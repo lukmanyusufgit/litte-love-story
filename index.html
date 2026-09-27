@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Our Little Love Story — game cerita cinta interaktif yang bisa dibagikan melalui link."
+    />
+    <title>Our Little Love Story ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+      <div id="landingScreen" class="screen active">
+        <div class="stars"></div>
+        <div class="floating-hearts" aria-hidden="true">
+          <span>❤</span>
+          <span>❤</span>
+          <span>❤</span>
+          <span>❤</span>
+          <span>❤</span>
+        </div>
+
+        <div class="landing-card">
+          <p class="eyebrow">Buat cerita cinta versimu sendiri.</p>
+          <h1>OUR LITTLE LOVE STORY <span>❤️</span></h1>
+
+          <div class="placeholder-gallery">
+            <div class="placeholder-photo photo-left">
+              <div class="placeholder-text">YOU</div>
+            </div>
+            <div class="placeholder-photo photo-center">
+              <div class="placeholder-text">US</div>
+            </div>
+            <div class="placeholder-photo photo-right">
+              <div class="placeholder-text">LOVE</div>
+            </div>
+          </div>
+
+          <button id="newStoryBtn" class="primary-btn large-btn" type="button">
+            BUAT CERITA BARU ❤️
+          </button>
+        </div>
+      </div>
+
+      <div id="setupScreen" class="screen">
+        <div class="setup-shell">
+          <div class="setup-card">
+            <div class="section-header">
+              <p class="mini-label">Cerita cinta Kamu</p>
+              <h2>Siapa yang akan menjadi bagian dari cerita ini?</h2>
+            </div>
+
+            <p class="privacy-note">
+              “Foto yang kamu pilih diproses di browser untuk menjalankan game ini.”
+            </p>
+
+            <div class="upload-grid">
+              <div class="upload-card">
+                <label for="userPhotoInput">Foto Kamu 📸</label>
+                <div class="upload-row">
+                  <input id="userPhotoInput" type="file" accept="image/jpeg,image/png,image/webp" data-role="user" />
+                  <button type="button" class="upload-btn" data-trigger="userPhotoInput">Pilih Foto Kamu</button>
+                </div>
+                <div class="preview-box" data-preview="user">
+                  <div class="empty-state">Belum ada foto</div>
+                  <img alt="Preview foto kamu" />
+                  <div class="preview-actions hidden">
+                    <button type="button" class="tiny-btn" data-reset="user">Hapus</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="upload-card">
+                <label for="partnerPhotoInput">Foto Pasanganmu 💕</label>
+                <div class="upload-row">
+                  <input id="partnerPhotoInput" type="file" accept="image/jpeg,image/png,image/webp" data-role="partner" />
+                  <button type="button" class="upload-btn" data-trigger="partnerPhotoInput">Pilih Foto Pasangan</button>
+                </div>
+                <div class="preview-box" data-preview="partner">
+                  <div class="empty-state">Belum ada foto</div>
+                  <img alt="Preview foto pasangan" />
+                  <div class="preview-actions hidden">
+                    <button type="button" class="tiny-btn" data-reset="partner">Hapus</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="upload-card">
+                <label for="togetherPhotoInput">Foto Kalian Bersama 🥰</label>
+                <div class="upload-row">
+                  <input id="togetherPhotoInput" type="file" accept="image/jpeg,image/png,image/webp" data-role="together" />
+                  <button type="button" class="upload-btn" data-trigger="togetherPhotoInput">Pilih Foto Bersama</button>
+                </div>
+                <div class="preview-box" data-preview="together">
+                  <div class="empty-state">Belum ada foto</div>
+                  <img alt="Preview foto bersama" />
+                  <div class="preview-actions hidden">
+                    <button type="button" class="tiny-btn" data-reset="together">Hapus</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="upload-card memory-card">
+                <label for="memoryPhotoInput">Foto Kenangan (Opsional)</label>
+                <div class="upload-row">
+                  <input id="memoryPhotoInput" type="file" accept="image/jpeg,image/png,image/webp" multiple data-role="memory" />
+                  <button type="button" class="upload-btn" data-trigger="memoryPhotoInput">Pilih Foto Kenangan</button>
+                </div>
+                <div class="memory-grid" id="memoryGrid"></div>
+              </div>
+            </div>
+
+            <div class="story-form">
+              <div class="field-row two-col">
+                <div class="field">
+                  <label for="userName">Nama kamu</label>
+                  <input id="userName" type="text" placeholder="Masukkan nama kamu" maxlength="40" />
+                </div>
+                <div class="field">
+                  <label for="partnerName">Nama pasangan</label>
+                  <input id="partnerName" type="text" placeholder="Masukkan nama pasangan" maxlength="40" />
+                </div>
+              </div>
+
+              <div class="field-row two-col">
+                <div class="field">
+                  <label for="specialDate">Tanggal spesial (opsional)</label>
+                  <input id="specialDate" type="date" />
+                </div>
+                <div class="field">
+                  <label for="storyTitle">Judul cerita (opsional)</label>
+                  <input id="storyTitle" type="text" placeholder="Contoh: Our Little Adventure" maxlength="50" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="themeSelect">Pilih tema</label>
+                <select id="themeSelect">
+                  <option value="romantic">Romantic Cinematic</option>
+                  <option value="cute">Cute Love Story</option>
+                  <option value="anime">Anime Love Story</option>
+                  <option value="minimalist">Minimalist Romantic</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="storyMessage">Pesan singkat untuk pasangan</label>
+                <textarea id="storyMessage" rows="4" maxlength="360" placeholder="Tulis pesan cinta kamu di sini"></textarea>
+              </div>
+
+              <div class="helper-box">
+                <strong>Contoh pesan:</strong>
+                <p>“Aku bersyukur bisa mengenal kamu. Terima kasih sudah menjadi bagian dari hidupku.”</p>
+              </div>
+            </div>
+
+            <div id="formStatus" class="form-status" aria-live="polite"></div>
+
+            <div class="setup-actions">
+              <button id="startStoryBtn" class="primary-btn large-btn" type="button">
+                MULAI LOVE STORY ❤️
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="storyScreen" class="screen">
+        <div class="story-topbar">
+          <button id="backToSetupBtn" class="secondary-btn" type="button">← Kembali</button>
+          <button id="musicToggle" class="secondary-btn" type="button" aria-label="Music On/Off">
+            🔊 Music Off
+          </button>
+        </div>
+
+        <div id="storyStage" class="story-stage" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
